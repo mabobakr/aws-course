@@ -61,7 +61,7 @@ jobs:
           name: Deploy App
           # Install, build, deploy in both apps using root level package.json
           command: |
-            eb init
+            eb init --region eu-east-1
             npm run deploy
           
 
