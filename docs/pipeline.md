@@ -1,0 +1,2 @@
+# Pipeline
+The deployment pipeline consists of several steps. CircleCI is used for CI/CD. The pipeline consists of 2 jobs: build and deploy. In the build job, all dependencies are installed and the project is built. In the deployment job, the application is deployed to aws.
