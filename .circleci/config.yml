@@ -23,33 +23,34 @@ jobs:
             echo $(node --version)
             echo "NPM --version" 
             echo $(npm --version)
-          # npm run frontend:install
-      # TODO: Install dependencies in the the backend API          
+            echo "Installing frontend dependencies"
+            npm run frontend:install
+      # Use root level package.json to install dependencies in the the backend API          
       - run:
           name: Install API Dependencies
           command: |
            echo "Installing backend dependencies"
-        # npm run api:install
-      # TODO: Lint the frontend
+           npm run api:install
+      # Lint the frontend
       - run:
           name: Front-End Lint
           command: |
-            echo "npm run frontend:lint"
-      # TODO: Build the frontend app
+            npm run frontend:lint
+      # Build the frontend app
       - run:
           name: Front-End Build
           command: |
-            echo "npm run frontend:build"
-      # TODO: Build the backend API      
+            npm run frontend:build
+      # Build the backend API      
       - run:
           name: API Build
           command: |
-            echo "npm run api:build"
+            npm run api:build
   # deploy step will run only after manual approval
   deploy:
     docker:
       - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
+      
     steps:
       - node/install:
           node-version: '14.15' 
@@ -58,10 +59,10 @@ jobs:
       - checkout
       - run:
           name: Deploy App
-          # TODO: Install, build, deploy in both apps
+          # Install, build, deploy in both apps using root level package.json
           command: |
-            echo "npm run deploy"
-          # echo "# TODO: Install, build, deploy in both apps"
+            npm run deploy
+          
 
 workflows:
   udagram:
