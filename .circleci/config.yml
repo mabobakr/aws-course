@@ -61,7 +61,7 @@ jobs:
           name: Deploy App
           # Install, build, deploy in both apps using root level package.json
           command: |
-            eb create udagram-env
+            eb init --region 1
             npm run deploy
           
 
