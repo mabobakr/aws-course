@@ -61,7 +61,6 @@ jobs:
           name: Deploy App
           # Install, build, deploy in both apps using root level package.json
           command: |
-            eb init --region 1
             npm run deploy
           
 
@@ -69,14 +68,6 @@ workflows:
   udagram:
     jobs:
       - build
-      - hold:
-          filters:
-            branches:
-              only:
-                - main
-          type: approval
-          requires:
-            - build
       - deploy:
           requires:
-            - hold
+            - build
