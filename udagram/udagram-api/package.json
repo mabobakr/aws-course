@@ -16,7 +16,7 @@
     "setenv2": "eb setenv POSTGRES_PASSWORD=$POSTGRES_PASSWORD && eb setenv POSTGRES_USERNAME=$POSTGRES_USERNAME",
     "setenv3": "eb setenv URL=$URL && eb setenv apiHost=$apiHost && eb setenv appPort=$appPort",
     "deploy": "npm run build && eb list && eb use Udagram-api-env && npm run setenv1 && npm run setenv2 && npm run setenv3 && eb deploy",
-    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && echo $(ls-al) && cd www && zip -r Archive.zip . && cd ..",
+    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
