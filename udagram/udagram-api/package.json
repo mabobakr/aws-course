@@ -12,7 +12,10 @@
     "dev": "npx ts-node ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
-    "deploy": "npm run build && eb list && eb use Udagram-api-env && eb deploy",
+    "setenv1": "eb setenv AWS_BUCKET=$AWS_BUCKET && eb setenv JWT_SECRET=$JWT_SECRET && eb setenv POSTGRES_DB=$POSTGRES_DB && eb setenv POSTGRES_HOST=$POSTGRES_HOST",
+    "setenv2": "eb setenv POSTGRES_PASSWORD=$POSTGRES_PASSWORD && eb setenv POSTGRES_USERNAME=$POSTGRES_USERNAME",
+    "setenv3": "eb setenv URL=$URL && eb setenv apiHost=$apiHost && eb setenv appPort=$appPort",
+    "deploy": "npm run build && eb list && eb use Udagram-api-env && npm run setenv1 && npm run setenv2 && npm run setenv3 && eb deploy",
     "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && echo $(ls-al) && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
