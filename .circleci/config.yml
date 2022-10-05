@@ -61,7 +61,7 @@ jobs:
       - run:
           name: Set Environment
           # Set environment
-          command:: |
+          command: |
             eb list
             eb use Udagram-api-env
             eb setenv AWS_BUCKET=$AWS_BUCKET
